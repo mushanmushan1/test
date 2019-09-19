@@ -17,4 +17,3 @@ while guess != secret:
         else:
             print("嘿，小了，小了~~~")
 print("游戏结束了，不玩啦^_^")
-print("I love this game!")
