@@ -8,6 +8,7 @@ baidu = requests.get("https://www.baidu.com/").content
 soup = BeautifulSoup(baidu, "html.parser")
 # print(soup)
 
+
 links = soup.find_all("a")
 
 for link in links:
