@@ -1,10 +1,11 @@
 import sys
+import requests
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 
 
-def getTitle(url):
+def getlinks(url):
     try:
         html = urlopen(url)
     except (HTTPError, URLError) as e:
@@ -12,21 +13,24 @@ def getTitle(url):
         return None
 
     try:
-        bsObj = BeautifulSoup(html.read(), "html.parser")
-        title = bsObj.find_all("h1")
-        # title = bsObj.h1
+        bsObj = BeautifulSoup(html, "html.parser")
+        links = bsObj.find_all("a")  # 获取 web页面链接
+
     except AttributeError as e:
+        print("bsObj fails")
         return None
 
-    return title
+    return links
 
 
-titles = getTitle("http://www.pythonscraping.com/pages/page1.html")
-if titles is None:
-    print("Title could not be found")
+links = getlinks("https://en.wikipedia.org/wiki/Kevin_Bacon")
+
+if links == None:
+    print("Links could not be found")
 else:
-    for title in titles:
-        print(title.text)
+    for link in links:
+        if "href" in link.attrs:
+            print(link.attrs['href'])
 
 
 
