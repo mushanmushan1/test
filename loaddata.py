@@ -25,3 +25,10 @@ normalized_X = preprocessing.normalize(X)
 standardized_X = preprocessing.scale(X)
 
 
+
+
+# feature importance
+# print(model.feature_importance_)
+
+
+
