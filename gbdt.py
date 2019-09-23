@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from scrapy import Item, Field
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
+from selenium import webdriver
 
 
 # def getlinks(url):
