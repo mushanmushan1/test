@@ -2,15 +2,15 @@ import cv2
 
 
 # 读取头像和国旗图案
-img_head = cv2.imread("wf_head.jpg")
-img_flag = cv2.imread("flag.jpg")
+img_head = cv2.imread("new_head.jpg")
+img_flag = cv2.imread("zxc.jpg")
 
 # 获取头像和国旗图案宽、高
 w_head, h_head = img_head.shape[:2]  # [0:3]图片的宽 高 颜色通道
 w_flag, h_flag = img_flag.shape[:2]
 
 # 计算图案缩放比例
-scale = w_head / w_flag / 4
+scale = w_head / w_flag / 8
 
 # 缩放图案
 img_flag = cv2.resize(img_flag, (0, 0), fx=scale, fy=scale)
@@ -23,10 +23,10 @@ for c in range(0, 3):
     img_head[w_head-w_flag:, h_head-h_flag:, c] = img_flag[:, :, c]
 
 # 保存最终结果
-cv2.imwrite("new_head.jpg", img_head)
+cv2.imwrite("new_head_1.jpg", img_head)
 
 # 显示=最终图片
-img = cv2.imread("new_head.jpg")
+img = cv2.imread("new_head_1.jpg")
 cv2.namedWindow("Image", 0)
 cv2.resizeWindow("Image", 500, 500)  # 创建一个500*500大小的窗口
 cv2.imshow("Image", img)
